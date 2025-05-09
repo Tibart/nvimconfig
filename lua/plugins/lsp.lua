@@ -35,22 +35,18 @@ return {
         [vim.diagnostic.severity.INFO] = "",
         [vim.diagnostic.severity.HINT] = "",
       }
+      -- https://neovim.io/doc/user/diagnostic.html
       vim.diagnostic.config({
+        severity_sort = true,
         signs = { text = icons },
         virtual_text = {
           source = "if_many",
-          prefix = function(d)
-            if d.severity == vim.diagnostic.severity.ERROR then return "󰅜"
-            elseif d.severity == vim.diagnostic.severity.WARN then return ""
-            elseif d.severity == vim.diagnostic.severity.INFO then return ""
-            elseif d.severity == vim.diagnostic.severity.HINT then return ""
-            else return ""
-            end
-          end,
+          prefix = function(d) return icons[d.severity] end,
           spacing = 3,
           current_line = true,
         }
       })
+
     end,
   },
 }

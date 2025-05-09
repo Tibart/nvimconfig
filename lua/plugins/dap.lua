@@ -1,5 +1,15 @@
 return {
   {
+    "mfussenegger/nvim-dap",
+    event = "VeryLazy",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      --"nvim-neotest/nvim-nio",
+      "jay-babu/mason-nvim-dap.nvim",
+      --"theHamsta/nvim-dap-virtual-text",
+    },
+  },
+  {
     "rcarriga/nvim-dap-ui",
     dependencies = {
       'mfussenegger/nvim-dap',
@@ -9,8 +19,8 @@ return {
     event = "VeryLazy",
     config = function()
 
-		  local dap, dapui = require('dap'), require('dapui')
-  		dapui.setup({
+      local dap, dapui = require('dap'), require('dapui')
+      dapui.setup({
         -- Customize UI lauout
         layout = {{
           elements = {
@@ -24,20 +34,20 @@ return {
 
       -- Auto open/close UI
       dap.listeners.after.event_initialized.dapui_config = function()
-  		  dapui.open()
-  		end
-	  	dap.listeners.before.attach.dapui_config = function()
-  		  dapui.open()
-  		end
-  		dap.listeners.before.launch.dapui_config = function()
-  		  dapui.open()
-  		end
-  		dap.listeners.before.event_terminated.dapui_config = function()
-  		  dapui.close()
-  		end
-  		dap.listeners.before.event_exited.dapui_config = function()
-  		  dapui.close()
-  		end
+        dapui.open()
+      end
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
 
       vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg='#ff0000' })
       vim.fn.sign_define('DapBreakpoint', { text='' , texthl='DapBreakpoint' })
@@ -52,6 +62,6 @@ return {
       vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Step Into" })
       vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Step Out" })
 
-  	end
-  },
+    end
+  }
 }
