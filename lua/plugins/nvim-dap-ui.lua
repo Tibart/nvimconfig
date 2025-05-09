@@ -1,8 +1,8 @@
 return {
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = { 
-      'mfussenegger/nvim-dap', 
+    dependencies = {
+      'mfussenegger/nvim-dap',
       'nvim-neotest/nvim-nio',
       'theHamsta/nvim-dap-virtual-text'
     },
@@ -12,7 +12,7 @@ return {
 		  local dap, dapui = require('dap'), require('dapui')
   		dapui.setup({
         -- Customize UI lauout
-        layout = {{ 
+        layout = {{
           elements = {
             { id = "breakpoint", size = 0.50 }
           }
@@ -44,7 +44,7 @@ return {
 
       vim.api.nvim_set_hl(0, 'DapStopped', { fg='#ffff00' })
       vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped' })
-      
+
       vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
       vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
       vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
