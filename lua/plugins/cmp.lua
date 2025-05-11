@@ -23,7 +23,12 @@ return {
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 400,
-      }
+      },
+      menu = {
+        auto_show = true,
+        draw = { treesitter = { 'lsp' } },
+      },
+      ghost_text = { enabled = true },
     },
     -- See the fuzzy documentation for more information
     fuzzy = { implementation = "prefer_rust_with_warning" }
