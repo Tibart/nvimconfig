@@ -6,6 +6,7 @@ return {
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Help tags" },
+    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Find marks" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
   },
 }

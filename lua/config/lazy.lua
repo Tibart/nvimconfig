@@ -22,17 +22,17 @@ vim.g.maplocalleader = "\\"
 -- Check is off because colorscheme is loaded too leate?!
 vim.g.lazyvim_check_order = false
 
--- Setup lazy.nvim
 require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-
-  -- Configure any other settings here. See the documentation for more details.
-  --colorscheme that will be used when installing plugins.
+  defaults = {
+    lazy = false,
+    version = false, -- always use the latest git commit
+  },
   install = { colorscheme = { "monokai-pro" } },
-
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = {
+    enabled = true,
+    notify = false,
+  }
 })
-
