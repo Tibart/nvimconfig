@@ -52,7 +52,7 @@ return {
       vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg='#ff0000' })
       vim.fn.sign_define('DapBreakpoint', { text='' , texthl='DapBreakpoint' })
 
-      vim.api.nvim_set_hl(0, 'DapStopped', { fg='#ffff00' })
+      vim.api.nvim_set_hl(0, 'DapStopped', { fg='#ffe500' })
       vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped' })
 
       vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })

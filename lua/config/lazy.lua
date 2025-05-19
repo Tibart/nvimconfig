@@ -15,13 +15,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- vim.opt's 
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- Check is off because colorscheme is loaded too leate?!
-vim.g.lazyvim_check_order = false
-
+require("config.options")
+require("config.keymaps")
 require("lazy").setup({
   spec = {
     { import = "plugins" },
@@ -34,5 +29,5 @@ require("lazy").setup({
   checker = {
     enabled = true,
     notify = false,
-  }
+  },
 })

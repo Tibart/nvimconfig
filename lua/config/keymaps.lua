@@ -1,3 +1,6 @@
+-- Set leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 -- Clear search highlite
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
