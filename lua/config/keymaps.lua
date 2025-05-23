@@ -1,22 +1,20 @@
 -- Set leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
--- Clear search highlite
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { desc = "Clear search highlite" })
 
 -- Move line up or down
 --vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 --vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 
--- Keeps clipboard after copy over text
-vim.keymap.set('n', '<leader>p', "\"_dP")
+vim.keymap.set('n', '<leader>p', "\"_dP", { desc = "Keep clipboard after paste over text" })
 
 -- copy/paste to/from system clipboard
-vim.keymap.set('n', '<leader>y', "\"+y")
-vim.keymap.set('v', '<leader>y', "\"+y")
-vim.keymap.set('n', '<leader>Y', "\"+Y")
-vim.keymap.set('n', '<leader>p', '\"+p')
-vim.keymap.set('v', '<leader>p', '\"+p')
+vim.keymap.set({ 'n', 'v' }, '<leader>y', "\"+y", { desc = "Yank selection to system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>yy', "\"+yy", { desc = "Yank line to system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '\"+p', { desc = "Put system clipboard after the cursor" })
+vim.keymap.set({ 'n', 'v' }, '<leader>P', '\"+P', { desc = "Put system clipboard before the cursor" })
 
 -- Prevent Q
 vim.keymap.set('n', 'Q', '<nop>')

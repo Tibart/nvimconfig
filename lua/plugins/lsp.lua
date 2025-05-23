@@ -46,6 +46,7 @@ return {
           current_line = true,
         }
       })
+      -- LSP confug
 
     end,
   },
