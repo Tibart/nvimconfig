@@ -1,3 +1,22 @@
+local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
+
+-- Custom telescope action to show full path
+local function show_telescope_path(prompt_bufnr)
+  local selection = action_state.get_selected_entry()
+  if selection then
+    local path = selection.path or selection.filename
+    if path then
+      -- Close telescope first
+      --actions.close(prompt_bufnr)
+      -- Show path
+      print("Full path: " .. path)
+      vim.fn.setreg('+', path)
+      --print("(Copied full parth to clipboard)")
+    end
+  end
+end
+
 return {
   'nvim-telescope/telescope.nvim', tag = '0.1.8',
   dependencies = {
@@ -18,5 +37,18 @@ return {
     },
   },
   config = function ()
+    require("telescope").setup{
+      defaults = {
+        path_display = { "smart" },  -- hidden, tail, absolute, smart, shorten, truncate
+        mappings = {
+          i = {
+            ["<C-g>p>"] = show_telescope_path,
+          },
+          n = {
+            ["<C-g>p"] = show_telescope_path,
+          },
+        }
+      },
+    }
   end
 }
