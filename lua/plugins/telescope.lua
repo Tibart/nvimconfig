@@ -1,18 +1,12 @@
-local actions = require('telescope.actions')
-local action_state = require('telescope.actions.state')
-
 -- Custom telescope action to show full path
-local function show_telescope_path(prompt_bufnr)
-  local selection = action_state.get_selected_entry()
+local function yank_telescope_path()
+  local selection = require('telescope.actions.state').get_selected_entry()
   if selection then
     local path = selection.path or selection.filename
     if path then
-      -- Close telescope first
-      --actions.close(prompt_bufnr)
-      -- Show path
       print("Full path: " .. path)
       vim.fn.setreg('+', path)
-      --print("(Copied full parth to clipboard)")
+      print("(Copied full parth to clipboard)")
     end
   end
 end
@@ -42,10 +36,8 @@ return {
         path_display = { "smart" },  -- hidden, tail, absolute, smart, shorten, truncate
         mappings = {
           i = {
-            ["<C-g>p>"] = show_telescope_path,
-          },
-          n = {
-            ["<C-g>p"] = show_telescope_path,
+            ["<C-f>p"] = yank_telescope_path,
+            ["<esc>"] = require('telescope.actions').close,
           },
         }
       },
