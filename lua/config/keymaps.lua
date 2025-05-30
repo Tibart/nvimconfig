@@ -18,3 +18,10 @@ vim.keymap.set({ 'n', 'v' }, '<leader>P', '\"+P', { desc = "Put system clipboard
 
 -- Prevent Q
 vim.keymap.set('n', 'Q', '<nop>')
+
+-- lsp
+vim.keymap.set({ 'n' }, 'grd', '<cmd>lua vim.lsp.buf.definition({ loclist=true })<cr>', { desc = 'vim.lsp.buf.definition()' })
+
+-- Buffers
+vim.keymap.set({ 'n' }, 'bd', '<cmd>bdelete<cr>', { desc = 'Delete current buffer' })
+vim.keymap.set({ 'n' }, 'bda', '<cmd>%bdelete<cr>', { desc = 'Delete all buffer' })

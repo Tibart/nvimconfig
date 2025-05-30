@@ -6,7 +6,7 @@ local function yank_telescope_path()
     if path then
       print("Full path: " .. path)
       vim.fn.setreg('+', path)
-      print("(Copied full parth to clipboard)")
+      -- print("(Copied full parth to clipboard)")
     end
   end
 end
@@ -26,8 +26,7 @@ return {
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
     { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find registers" },
     { "<leader>fc",
-      function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath('config') } end,
-      desc = "Find config files"
+      function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath('config') } end, desc = "Find config files"
     },
   },
   config = function ()
@@ -42,5 +41,6 @@ return {
         }
       },
     }
+    require("telescope").load_extension("fzf")
   end
 }
