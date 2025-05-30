@@ -15,6 +15,7 @@ return {
   'nvim-telescope/telescope.nvim', tag = '0.1.8',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'tsakirist/telescope-lazy.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   keys = {
@@ -28,6 +29,7 @@ return {
     { "<leader>fc",
       function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath('config') } end, desc = "Find config files"
     },
+    { "<leader>fp", "<cmd>Telescope lazy<cr>", desc = "Find plugin help pages" },
   },
   config = function ()
     require("telescope").setup{
@@ -40,7 +42,24 @@ return {
           },
         }
       },
+      extensions = {
+        lazy = {
+          show_icon = true,
+          mappings = {
+            open_in_browser = "<cr>",
+          },
+          actions_opts = {
+            open_in_browser = {
+              auto_close = true,
+            },
+            change_cwd_to_plugin = {
+              auto_close = true,
+            },
+          },
+        },
+      },
     }
+    require("telescope").load_extension("lazy")
     require("telescope").load_extension("fzf")
   end
 }

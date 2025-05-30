@@ -29,4 +29,5 @@ vim.opt.backup = false
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 
---vim.opt.guicursor = ""
+-- Add plugin path for gf
+vim.opt.path:append(vim.fn.stdpath("data") .. "/lazy/*")
