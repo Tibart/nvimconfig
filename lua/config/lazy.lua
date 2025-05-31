@@ -38,3 +38,5 @@ require("lazy").setup({
     backdrop = 10,
   },
 })
+
+vim.cmd.colorscheme("evergarden")

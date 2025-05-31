@@ -26,6 +26,7 @@ return {
     { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Find marks" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find keymaps" },
     { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find registers" },
+    { "<leader>ft", "<cmd>Telescope colorscheme<cr>", desc = "Find colorscheme" },
     { "<leader>fc",
       function() require('telescope.builtin').find_files { cwd = vim.fn.stdpath('config') } end, desc = "Find config files"
     },
@@ -41,6 +42,9 @@ return {
             ["<esc>"] = require('telescope.actions').close,
           },
         }
+      },
+      pickers = {
+        colorscheme = { enable_preview = true },
       },
       extensions = {
         lazy = {
