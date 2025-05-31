@@ -6,7 +6,6 @@ local function yank_telescope_path()
     if path then
       print("Full path: " .. path)
       vim.fn.setreg('+', path)
-      -- print("(Copied full parth to clipboard)")
     end
   end
 end
