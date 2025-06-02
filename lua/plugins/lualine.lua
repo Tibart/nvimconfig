@@ -1,3 +1,5 @@
+local function num() return vim.fn.tabpagenr() end
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -14,7 +16,7 @@ return {
         },
         ignore_focus = {},
         always_divide_middle = true,
-        always_show_tabline = true,
+        always_show_tabline = false,
         globalstatus = false,
         refresh = {
           statusline = 100,
@@ -23,7 +25,7 @@ return {
         }
       },
       sections = {
-        lualine_a = {'mode'},
+        lualine_a = {num, 'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'filename'},
         lualine_x = {'encoding', 'filetype'},  --'fielformat' gives pinguin when *nix fs.
@@ -38,7 +40,16 @@ return {
         lualine_y = {},
         lualine_z = {}
       },
-      tabline = {},
+      tabline = {
+        lualine_b = {{
+          'tabs',
+          mode = 1,
+          max_length = vim.o.columns,
+          fmt = function (name, ctx)
+            return ctx.tabnr .. ':' .. name
+          end,
+        }},
+      },
       winbar = {},
       inactive_winbar = {},
       extensions = {}
