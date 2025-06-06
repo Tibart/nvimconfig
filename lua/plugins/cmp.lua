@@ -5,7 +5,7 @@ return {
   version = '1.*',
   opts = {
     keymap = {
-      preset = 'super-tab',
+      preset = 'enter',  --super-tab
       ['<C-bs>'] = { 'cancel' }
     },
     appearance = {
