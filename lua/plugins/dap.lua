@@ -4,10 +4,30 @@ return {
     event = "VeryLazy",
     dependencies = {
       "rcarriga/nvim-dap-ui",
-      --"nvim-neotest/nvim-nio",
       "jay-babu/mason-nvim-dap.nvim",
-      --"theHamsta/nvim-dap-virtual-text",
     },
+    config = function()
+      local dap = require("dap")
+
+      dap.adapters.coreclr = {
+        type = 'executable',
+        command = '/usr/local/bin/netcoredbg/netcoredbg',
+        args = {'--interpreter=vscode'}
+      }
+
+      dap.configurations.cs = {
+        {
+          type = 'coreclr',
+          name = 'launch - netcoredbg',
+          request = 'launch',
+          program = function()
+            -- return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/net9.0/' .. vim.fn.expand('<sfile>:p'))
+            return vim.fn.input('Path to dll: ', vim.fn.expand('%:h') .. '/bin/Debug/net9.0/', 'file')
+          end,
+        },
+      }
+
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
