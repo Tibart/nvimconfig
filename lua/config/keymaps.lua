@@ -27,8 +27,9 @@ vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set({ 'n' }, 'grd', '<cmd>lua vim.lsp.buf.definition({ loclist=true })<cr>', { desc = 'vim.lsp.buf.definition()' })
 
 -- Buffers
-vim.keymap.set({ 'n' }, 'bd', '<cmd>bdelete<cr>', { desc = 'Delete current buffer' })
-vim.keymap.set({ 'n' }, 'bda', '<cmd>%bdelete<cr>', { desc = 'Delete all buffer' })
+vim.keymap.set({ 'n' }, '<leader>bp', '<cmd>bprev<cr>', {desc = 'Goto previouse buffer'})
+vim.keymap.set({ 'n' }, '<leader>bda', '<cmd>%bdelete<cr>', { desc = 'Delete all buffer' })
+vim.keymap.set({ 'n' }, '<leader>bd', '<cmd>bdelete<cr>', {desc = 'Delete current buffer'})
 
 -- Set numbers highlight toggle
 vim.keymap.set('n', '<leader>tl', utils.toggle_hl_linenr, { desc = 'Toggle line number highlight' })
