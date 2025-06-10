@@ -1,3 +1,7 @@
+-- Load utils module
+local utils = require("utils")
+
+
 -- Set leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -25,3 +29,6 @@ vim.keymap.set({ 'n' }, 'grd', '<cmd>lua vim.lsp.buf.definition({ loclist=true }
 -- Buffers
 vim.keymap.set({ 'n' }, 'bd', '<cmd>bdelete<cr>', { desc = 'Delete current buffer' })
 vim.keymap.set({ 'n' }, 'bda', '<cmd>%bdelete<cr>', { desc = 'Delete all buffer' })
+
+-- Set numbers highlight toggle
+vim.keymap.set('n', '<leader>tl', utils.toggle_hl_linenr, { desc = 'Toggle line number highlight' })
